@@ -17,8 +17,8 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
     #go into diractory and copy data we're interested in to that directory
     cd gh-pages
-    cp -f $HOME/build/blue119/robot-travi/RobotDemo/log.html .
-    cp -f $HOME/build/blue119/robot-travi/RobotDemo/report.html .
+    cp -f $HOME/build/blue119/robot-travis/RobotDemo/log.html .
+    cp -f $HOME/build/blue119/robot-travis/RobotDemo/report.html .
 
     #add, commit and push files
     git add -f .

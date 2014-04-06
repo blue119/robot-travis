@@ -9,7 +9,8 @@ install:
 script:
     - cd RobotDemo && pybot keyword_driven.txt
 
-after_success: ./update-gh-pages.sh
+after_success: 
+    - cd $HOME && ./update-gh-pages.sh
 
 env:
     global:

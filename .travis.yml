@@ -10,7 +10,7 @@ script:
     - cd RobotDemo && pybot keyword_driven.txt
 
 after_success: 
-    - cd $HOME && ./update-gh-pages.sh
+    - cd $HOME && echo "$HOME" && ls && ./update-gh-pages.sh
 
 env:
     global:

@@ -1,12 +1,13 @@
-echo -e "TRAVIS_PULL_REQUEST == $TRAVIS_PULL_REQUEST\n"
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo -e "Starting to update gh-pages\n"
 
     #copy data we're interested in to other place
     # cp -R coverage $HOME/coverage
+    mkdir -p $HOME/$TRAVIS_BUILD_NUMBER
+    cp -f output.xml log.html report.html $HOME/$TRAVIS_BUILD_NUMBER
 
     #go to home and setup git
-    echo $HOME
+    # echo $HOME
     cd $HOME
 
     git config --global user.email "travis@travis-ci.org"
@@ -17,13 +18,12 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
     #go into diractory and copy data we're interested in to that directory
     cd gh-pages
-    cp -f $HOME/build/blue119/robot-travis/RobotDemo/log.html .
-    cp -f $HOME/build/blue119/robot-travis/RobotDemo/report.html .
+    cp -rf $HOME/$TRAVIS_BUILD_NUMBER gh-pages
 
     #add, commit and push files
     git add -f .
     git commit -m "Travis build $TRAVIS_BUILD_NUMBER pushed to gh-pages"
     git push -fq origin gh-pages > /dev/null
 
-    echo -e "Done magic with coverage\n"
+    echo -e "Done... \n"
 fi

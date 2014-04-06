@@ -25,7 +25,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
     #go into diractory and copy data we're interested in to that directory
     cd gh-pages
-    echo "$TRAVIS_BUILD_NUMBER\t$nOfPass\t$nOfFail" >> summary.csv
+    echo -e "$TRAVIS_BUILD_NUMBER\t$nOfPass\t$nOfFail\n" >> summary.csv
     cp -rf $HOME/$TRAVIS_BUILD_NUMBER .
 
     #add, commit and push files

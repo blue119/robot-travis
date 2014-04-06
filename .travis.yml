@@ -10,7 +10,7 @@ script:
     - cd RobotDemo && pybot keyword_driven.txt
 
 after_success: 
-    - cd $HOME && echo "$HOME" && ls && ./build/blue119/robot-travis/update-gh-pages.sh
+    - pwd && ls && ./build/blue119/robot-travis/update-gh-pages.sh
 
 env:
     global:

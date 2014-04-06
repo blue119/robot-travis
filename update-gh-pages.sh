@@ -1,3 +1,4 @@
+echo -e "TRAVIS_PULL_REQUEST == $TRAVIS_PULL_REQUEST\n"
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo -e "Starting to update gh-pages\n"
 

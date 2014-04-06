@@ -6,6 +6,13 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     mkdir -p $HOME/$TRAVIS_BUILD_NUMBER
     cp -f output.xml log.html report.html $HOME/$TRAVIS_BUILD_NUMBER
 
+    result=`grep "All Test" output.xml`
+    nOfPass=${result##*pass=\"}
+    nOfPass=${nOfPass%%\"*}
+
+    nOfFail=${result##*fail=\"}
+    nOfFail=${nOfFail%%\"*}
+
     #go to home and setup git
     # echo $HOME
     cd $HOME
@@ -18,6 +25,7 @@ if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
 
     #go into diractory and copy data we're interested in to that directory
     cd gh-pages
+    echo "$TRAVIS_BUILD_NUMBER\t$nOfPass\t$nOfFail" >> sumarry.csv
     cp -rf $HOME/$TRAVIS_BUILD_NUMBER .
 
     #add, commit and push files
